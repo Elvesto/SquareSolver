@@ -1,44 +1,51 @@
 #include <stdio.h>
 #include <math.h>
-#define and &&
 
-int discr(int a, int b, int c);
-void solver(int* a, int* b);
-void solver(int* a, int* b, int D);
+double discr(double a, double b, double c);
+void solver1(double* a, double* b);
+void solver2(double* a, double* b, double D);
 int main()
 {
-    int a, b, c;
-    scanf("%d%d%d", &a, &b, &c);
-    if ((a != 0) and (b != 0) and (c != 0))
+    double a, b, c;
+    scanf("%lf%lf%lf", &a, &b, &c);
+    if ((a != 0))
     {
-        int D = discr(a, b, c);
+        double D = discr(a, b, c);
         if (D < 0)
-            printf("Sad, equations haven`t solver");
+            printf("Sad, equations haven`t solution");
         else if (D == 0)
         {
-            solver(&a, &b);
-            printf("%d", a);
+            solver1(&a, &b);
+            printf("%lf", a);
         }
         else
         {
-            solver(&a, &b, D);
-            printf("%d\t%d", a, b);
+            solver2(&a, &b, D);
+            printf("%lf %lf", a, b);
         }
+    }
+    else if (a == 0 && b != 0)
+    {
+        printf("%lf", -c/b);
+    }
+    else
+    {
+        printf("Sad, equations haven`t solution");
     }
 }
 
 
 
-int discr(int a, int b, int c)
+double discr(double a, double b, double c)
 {
     return b*b - 4*a*c;
 }
-void solver(int* a, int* b)
+void solver1(double* a, double* b)
 {
-    int c = *a;
+    double c = *a;
     *a = (-(*b))/2.0/c;
 }
-void solver(int* a, int* b, int D)
+void solver2(double* a, double* b, double D)
 {
     float x1, x2;
     x1 = (-(*b) + sqrt(D))/2.0/ *a;
