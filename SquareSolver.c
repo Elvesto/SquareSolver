@@ -23,12 +23,23 @@ enum NumberOfRoots solverAll(double a, double b, double c, double* x1, double* x
 
 int main() {
     double a, b, c;
+    char buf[10];
+
     while (1) {
         int n = scanf("%lf%lf%lf", &a, &b, &c);
         if (n != 3) {
-            printf("Exit the program...\n");
-            break;
+            if (scanf("%[q]", &buf)) {
+                printf("Exit the program...\n");
+                break;
+            }
+            else {
+                printf("format: a b c\n");
+                printf("ax^2 + bx + c = 0\n");
+                fflush(stdin);
+                continue;
+            }
         }
+
         double x1, x2;
         enum NumberOfRoots numbRoots = solverAll(a, b, c, &x1, &x2);
         switch (numbRoots) {
