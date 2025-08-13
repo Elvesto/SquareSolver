@@ -26,7 +26,7 @@ int main() {
     while (1) {
         scanf("%lf%lf%lf", &a, &b, &c);
         double x1, x2;
-        int numbRoots = solverAll(a, b, c, &x1, &x2);
+        enum NumberOfRoots numbRoots = solverAll(a, b, c, &x1, &x2);
         switch (numbRoots) {
             case ZERO:
                 printf("No real solution\n");
