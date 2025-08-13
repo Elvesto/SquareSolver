@@ -24,7 +24,11 @@ enum NumberOfRoots solverAll(double a, double b, double c, double* x1, double* x
 int main() {
     double a, b, c;
     while (1) {
-        scanf("%lf%lf%lf", &a, &b, &c);
+        int n = scanf("%lf%lf%lf", &a, &b, &c);
+        if (n != 3) {
+            printf("Exit the program...\n");
+            break;
+        }
         double x1, x2;
         enum NumberOfRoots numbRoots = solverAll(a, b, c, &x1, &x2);
         switch (numbRoots) {
