@@ -11,15 +11,30 @@ void solver1(double a, double b, double* x);
 void solver2(double a, double b, double D, double* x1, double* x2);
 bool equalZero(double numb);
 int solverQuad(double a, double b, double c, double* x1, double* x2);
-void solverLineal(double b, double c);
-void solverAll(double a, double b, double c, double* x1, double* x2);
+double solverLineal(double b, double c);
+int solverAll(double a, double b, double c, double* x1, double* x2);
 
 
 int main() {
     double a, b, c;
     double x1, x2;
     scanf("%lf%lf%lf", &a, &b, &c);
-    solverAll(a, b, c, &x1, &x2);
+    switch (solverAll(a, b, c, &x1, &x2)) {
+        case 0:
+            printf("No real solution");
+            break;
+        case 1:
+            printf("%lf", x1);
+            break;
+        case 2:
+            printf("%lf %lf", x1, x2);
+            break;
+        case 3:
+            printf("Infinite solution");
+            break;
+        default:
+            printf("razrab daun");
+    }
 
 }
 
@@ -48,38 +63,27 @@ int solverQuad(double a, double b, double c, double* x1, double* x2) {
     else if (equalZero(D)) {
         solver1(a, b, x1);
         return 1;
-        //printf("%lf", x);
     } else {
         solver2(a, b, D, x1, x2);
         return 2;
-        //printf("%lf %lf", x1, x2);
     }
     int lol() {
         return 1;
     }
 }
 
-void solverLineal(double b, double c) {
-    printf("%lf", -c/b);
+double solverLineal(double b, double c) {
+    return -c/b;
 }
-void solverAll(double a, double b, double c, double* x1, double *x2) {
+int solverAll(double a, double b, double c, double* x1, double *x2) {
     if (!equalZero(a)) {
-        switch (solverQuad(a, b, c, x1, x2)) {
-            case 0:
-                printf("No real solution");
-                break;
-            case 1:
-                printf("%lf", *x1);
-                break;
-            case 2:
-                printf("%lf %lf", *x1, *x2);
-                break;
-        }
+        return solverQuad(a, b, c, x1, x2);
     } else if (equalZero(a) && !equalZero(b)) {
-        solverLineal(b, c);
+        *x1 = solverLineal(b, c);
+        return 1;
     } else if (equalZero(a) && equalZero(b) && equalZero(c)) {
-        printf("Infinite solution");
+        return 3;
     } else {
-        printf("No real solution");
+        return 0;
     }
 }
