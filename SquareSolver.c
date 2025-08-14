@@ -6,15 +6,13 @@
 const double EPSILON = 1e-10;
 
 
-typedef enum NumberOfRoots NumberOfRoots;
 
-
-enum NumberOfRoots {
+ typedef enum NumberOfRoots {
     ZERO = 0,
     ONE,
     TWO,
     INFINITE
-};
+} NumberOfRoots;
 
 double dis(double a, double b, double c);
 void solver1(double a, double b, double* x);
@@ -23,11 +21,11 @@ bool equalZero(double numb);
 NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2);
 double solverLineal(double b, double c);
 NumberOfRoots solverAll(double a, double b, double c, double* x1, double* x2);
+void clean_stdin(void);
 
 
 int main() {
     double a, b, c;
-    char buf[10];
 
     while (1) {
         int n = scanf("%lf%lf%lf", &a, &b, &c);
@@ -37,9 +35,9 @@ int main() {
                 break;
             }
             else {
+                clean_stdin();
                 printf("format: a b c\n");
                 printf("ax^2 + bx + c = 0\n");
-                fflush(stdin);
                 continue;
             }
         }
@@ -112,4 +110,8 @@ NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2) {
     } else {
         return ZERO;
     }
+}
+void clean_stdin(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
