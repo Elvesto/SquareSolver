@@ -5,6 +5,10 @@
 
 const double EPSILON = 1e-10;
 
+
+typedef enum NumberOfRoots NumberOfRoots;
+
+
 enum NumberOfRoots {
     ZERO = 0,
     ONE,
@@ -16,9 +20,9 @@ double dis(double a, double b, double c);
 void solver1(double a, double b, double* x);
 void solver2(double a, double b, double D, double* x1, double* x2);
 bool equalZero(double numb);
-enum NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2);
+NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2);
 double solverLineal(double b, double c);
-enum NumberOfRoots solverAll(double a, double b, double c, double* x1, double* x2);
+NumberOfRoots solverAll(double a, double b, double c, double* x1, double* x2);
 
 
 int main() {
@@ -28,7 +32,7 @@ int main() {
     while (1) {
         int n = scanf("%lf%lf%lf", &a, &b, &c);
         if (n != 3) {
-            if (scanf("%[q]", &buf)) {
+            if (getc(stdin) == 'q') {
                 printf("Exit the program...\n");
                 break;
             }
@@ -81,7 +85,7 @@ bool equalZero(double numb) {
     return fabs(numb) <= EPSILON;
 }
 
-enum NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2) {
+NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2) {
     double D = dis(a, b, c);
     if (D < 0)
         return ZERO;
@@ -97,7 +101,7 @@ enum NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* 
 double solverLineal(double b, double c) {
     return -c/b;
 }
-enum NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2) {
+NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2) {
     if (!equalZero(a)) {
         return solverQuad(a, b, c, x1, x2);
     } else if (equalZero(a) && !equalZero(b)) {
