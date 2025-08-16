@@ -1,3 +1,4 @@
+const double EPSILON = 1e-8;
 
 
 void clean_stdin() {
