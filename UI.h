@@ -4,25 +4,25 @@ typedef enum State {
     ERROR
 } State;
 
-void getCoef(double* a, double* b, double* c, State* state) {
+State getCoef(double* a, double* b, double* c) {
     int n = scanf("%lf%lf%lf", a, b, c);
     if (n != 3) {
         if (getc(stdin) == 'q') {
             printf("Exit the program...\n");
-            *state = QUIT;
+            return QUIT;
         }
         else {
             clean_stdin();
             printf("format: a b c\n");
             printf("ax^2 + bx + c = 0\n");
-            *state = ERROR;
+            return ERROR;
         }
     } else {
-        *state = PROCESS;
+        return PROCESS;
     }
 }
 
-void printSolution(double a, double b, double c)
+void printSolution(double x1, double x2)
 {
     double x1, x2;
     NumberOfRoots numbRoots = solverAll(a, b, c, &x1, &x2);
