@@ -22,10 +22,8 @@ State getCoef(double* a, double* b, double* c) {
     }
 }
 
-void printSolution(double x1, double x2)
+void printSolution(double x1, double x2, NumberOfRoots numbRoots)
 {
-    double x1, x2;
-    NumberOfRoots numbRoots = solverAll(a, b, c, &x1, &x2);
     switch (numbRoots) {
         case ZERO:
             printf("No real solution\n");

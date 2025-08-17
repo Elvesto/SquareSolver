@@ -17,8 +17,9 @@ int main() {
             continue;
         else if (state == QUIT)
             break;
-
-        printSolution(a, b, c);
+        double x1, x2;
+        NumberOfRoots numbRoots = solverAll(a, b, c, &x1, &x2);
+        printSolution(a, b, c, numbRoots);
     }
     return 0;
 }
