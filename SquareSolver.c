@@ -3,28 +3,24 @@
 #include <stdbool.h>
 #include "tools.h"
 #include "solvers.h"
+#include "UI.h"
 
-
-
-/*double dis(double a, double b, double c);
-void solver1(double a, double b, double* x);
-void solver2(double a, double b, double D, double* x1, double* x2);
-bool equalZero(double numb);
-NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2);
-double solverLineal(double b, double c);
-NumberOfRoots solverAll(double a, double b, double c, double* x1, double* x2);
-void clean_stdin();
-*/
 
 int main() {
-    megaSolver();
+    State state;
+    double a, b, c;
+    while (1) {
+
+        getCoef(&a, &b, &c, &state);
+
+        if (state == ERROR)
+            continue;
+        else if (state == QUIT)
+            break;
+
+        printSolution(a, b, c);
+
+    }
     return 0;
 
 }
-
-
-
-
-
-
-
