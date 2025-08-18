@@ -1,3 +1,6 @@
+void clean_stdin();
+bool equalZero(double numb);
+
 void clean_stdin() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);

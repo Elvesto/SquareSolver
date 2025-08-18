@@ -5,6 +5,13 @@ typedef enum NumberOfRoots {
     INFINITE
 } NumberOfRoots;
 
+double dis(double a, double b, double c);
+void solverWithOneRoot(double a, double b, double* x);
+void solverWithTwoRoots(double a, double b, double D, double* x1, double* x2);
+NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2);
+double solverLineal(double b, double c);
+NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2);
+
 double dis(double a, double b, double c) {
     return b*b - 4*a*c;
 }

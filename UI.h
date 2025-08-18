@@ -1,8 +1,13 @@
+#include "solvers.h"
+
 typedef enum State {
     QUIT = 0,
     PROCESS,
     ERROR
 } State;
+
+State getCoef(double* a, double* b, double* c);
+void printSolution(double x1, double x2, NumberOfRoots numbRoots);
 
 State getCoef(double* a, double* b, double* c) {
     int n = scanf("%lf%lf%lf", a, b, c);
@@ -22,8 +27,7 @@ State getCoef(double* a, double* b, double* c) {
     }
 }
 
-void printSolution(double x1, double x2, NumberOfRoots numbRoots)
-{
+void printSolution(double x1, double x2, NumberOfRoots numbRoots) {
     switch (numbRoots) {
         case ZERO:
             printf("No real solution\n");
