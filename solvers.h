@@ -1,3 +1,6 @@
+#ifndef SOLVERS_H_
+#define SOLVERS_H_
+
 typedef enum NumberOfRoots {
     ZERO = 0,
     ONE,
@@ -55,3 +58,4 @@ NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2) {
         return ZERO;
     }
 }
+#endif

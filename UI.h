@@ -1,7 +1,4 @@
-#ifndef SOLVERS_H
-#define SOLVERS_H
 #include "solvers.h"
-#endif
 
 typedef enum State {
     QUIT = 0,
