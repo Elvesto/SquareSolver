@@ -2,7 +2,14 @@
 #include <math.h>
 #include <stdbool.h>
 #include "tools.h"
+
+#ifndef SOLVERS_H
+#define SOLVERS_H
+#include "solvers.h"
+#endif
+
 #include "UI.h"
+
 
 int main() {
     while (1) {
