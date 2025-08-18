@@ -1,3 +1,7 @@
+#ifndef UI_H
+#define UI_H
+
+
 #include "solvers.h"
 
 typedef enum State {
@@ -45,3 +49,6 @@ void printSolution(double x1, double x2, NumberOfRoots numbRoots) {
             printf("razrab daun");
     }
 }
+
+
+#endif

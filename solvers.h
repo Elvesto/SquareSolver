@@ -21,6 +21,7 @@ double dis(double a, double b, double c) {
 
 void solverWithOneRoot(double a, double b, double* x) {
     *x = (-b) / (2 * a);
+    *x = equalZero(*x) ? 0 : *x;
 }
 
 void solverWithTwoRoots(double a, double b, double D, double* x1, double* x2) {
@@ -58,4 +59,7 @@ NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2) {
         return ZERO;
     }
 }
+
+
+
 #endif
