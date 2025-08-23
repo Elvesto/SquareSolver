@@ -1,6 +1,5 @@
-#ifndef UI_H
-#define UI_H
-
+#ifndef UI_H_
+#define UI_H_
 
 #include "solvers.h"
 
@@ -10,45 +9,22 @@ typedef enum State {
     ERROR
 } State;
 
+//------------------------------------------------
+//! @param [out] a Указатель на коэфициент, чтобы его получить
+//! @param [out] b Указатель на коэфициент, чтобы его получить
+//! @param [out] c Указатель на коэфициент, чтобы его получить
+//!
+//! @return Функция возвращает состояние программы, 
+//!  QUIT - Выход из программы, PROCESS - Продолжение выполнение программы, ERROR - Выход из программы
+//------------------------------------------------
 State getCoef(double* a, double* b, double* c);
+
+//------------------------------------------------------------------
+//! @param [in] x1 Первый корень
+//! @param [in] x2 Второй корень
+//! @param [in] numbRoots Количество корней, который сущесвуют для данного уравнения
+//------------------------------------------------------------------
 void printSolution(double x1, double x2, NumberOfRoots numbRoots);
 
-State getCoef(double* a, double* b, double* c) {
-    int n = scanf("%lf%lf%lf", a, b, c);
-    if (n != 3) {
-        if (getc(stdin) == 'q') {
-            printf("Exit the program...\n");
-            return QUIT;
-        }
-        else {
-            clean_stdin();
-            printf("format: a b c\n");
-            printf("ax^2 + bx + c = 0\n");
-            return ERROR;
-        }
-    } else {
-        return PROCESS;
-    }
-}
 
-void printSolution(double x1, double x2, NumberOfRoots numbRoots) {
-    switch (numbRoots) {
-        case ZERO:
-            printf("No real solution\n");
-            break;
-        case ONE:
-            printf("%lf\n", x1);
-            break;
-        case TWO:
-            printf("%lf %lf\n", x1, x2);
-            break;
-        case INFINITE:
-            printf("Infinite solution\n");
-            break;
-        default:
-            printf("razrab daun");
-    }
-}
-
-
-#endif
+#endif // UI_H_
