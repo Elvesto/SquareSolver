@@ -29,3 +29,15 @@ bool myIsInf(double x) {
 bool myIsFinite(double numb) {
     return (myIsInf(numb) || myIsNAN(numb));
 }
+
+void swapSort(double *num1, double *num2) {
+    if (*num1 < *num2) {
+        double temp = *num1;
+        *num1 = *num2;
+        *num2 = temp;
+    }
+}
+bool equal(double num1, double num2) {
+    const double EPSILON = 1e-8;
+    return ((num1 - num2 < EPSILON) || (num2 - num1 < EPSILON));
+}

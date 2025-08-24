@@ -1,6 +1,5 @@
 #ifndef COLORS_H_
 #define COLORS_H_
-// FIXME формат header guard: FILE_NAME_H_
 
 #define RED             "\033[0;31m"
 #define BLUE            "\033[0;34m"

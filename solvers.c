@@ -5,8 +5,6 @@
 #include "assertik.h"
 #include "tools.h"
 
-// FIXME доки в хедеры
-
 double discriminant(double a, double b, double c) {
     ASSERT(!(myIsFinite(a)));
     ASSERT(!(myIsFinite(b)));
@@ -34,6 +32,9 @@ void solverWithTwoRoots(double a, double b, double D, double* x1, double* x2) {
     D = sqrt(D);
     *x1 = (-b + D)/2.0/a;
     *x2 = (-b - D)/2.0/a;
+    swapSort(x1, x2);
+    *x1 = equalZero(*x1) ? 0 : *x1;
+    *x2 = equalZero(*x2) ? 0 : *x2;
 }
 
 NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2) {

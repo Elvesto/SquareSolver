@@ -1,7 +1,5 @@
 #ifndef TOOLS_H_
 #define TOOLS_H_
-// FIXME docs
-// FIXME выбрать один стиль для функций (чекни google code style C++)
 
 //----------------------------------------------------
 //! @note Очищает входной поток
@@ -31,6 +29,10 @@ bool myIsInf(double x);
 //! @return Ф-ия возвращает является ли число NAN или бесконечностью
 //----------------------------------------------------
 bool myIsFinite(double numb);
+
+void swapSort(double *num1, double *num2);
+
+bool equal(double num1, double num2);
 
 
 #endif // TOOLS_H_

@@ -7,6 +7,9 @@
 #include "tools.h"
 #include "solvers.h"
 #include "UI.h"
+#include "test.h"
+
+// FIXME основное: тесты
 
 /*void solverTester() {
     double x1 = 0, x2 = 0;
@@ -23,7 +26,8 @@
 }*/
 
 int main() {
-    //solverTester();
+    printf("%d\n", equal(NAN, NAN));
+    //printf("%d\n", testAll());
     while (1) {
         printf(YELLOW BOLD "Enter the coefficients of the equation" RESET"\n");
         double a = 0, b = 0, c = 0;
@@ -44,17 +48,3 @@ int main() {
     return 0;
 }
 
-
-/*enum result {
-    BOLSHE = 0,
-    MENSHE,
-    RAVNO
-}
-enum result equals(double a, double b) {
-    if (a - b > EPSILON) {
-        return BOLSHE
-    }
-    else if (b - a > EPSILON)
-    else if (fabs(a - b)
-}
-if equals(kakayto huina) == BOLSHE*/
