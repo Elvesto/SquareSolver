@@ -1,4 +1,14 @@
+#ifndef TEST_H_
+#define TEST_H_
+
+struct Equation {
+    double a, b, c;
+    int countRoots;
+    double x1, x2;
+};
+
+int test(Equation equation);
+int testAll(char *f);
 
 
-int test(double a, double b, double c, int countRootsRef, double x1ref, double x2ref);
-int testAll();
+#endif // TEST_H_
