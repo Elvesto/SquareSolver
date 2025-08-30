@@ -4,6 +4,7 @@
 #include <getopt.h>
 #include <string.h>
 
+#include "assertik.h"
 #include "solvers.h"
 #include "UI.h"
 #include "colors.h"
@@ -28,16 +29,18 @@ void interactive() {
 
         if (state == ERROR)
             continue;
-        else if (state == QUIT) {
+        else if (state == QUIT)
             break;
-        }
 
         double x1 = 0, x2 = 0;
         NumberOfRoots numbRoots = solverAll(a, b, c, &x1, &x2);
         printSolution(x1, x2, numbRoots);
     }
 }
-Mode chooseMode(int argc, char *argv[], char* *file) {
+
+Mode chooseMode(const int argc, const char *argv[], char **file) {
+    ASSERT(file != NULL);
+
     Mode mode = {0};
     int opt = 0;
     while (1) {
@@ -47,7 +50,7 @@ Mode chooseMode(int argc, char *argv[], char* *file) {
             {"interactive", 0, 0, 'i'},
             {0, 0, 0, 0}
         };
-        opt = getopt_long(argc, argv, "ht:i", long_options, NULL);
+        opt = getopt_long(argc, (char* const*) argv, "ht:i", long_options, NULL);
         if (opt == -1)
             break;
         switch (opt) {
@@ -70,18 +73,7 @@ Mode chooseMode(int argc, char *argv[], char* *file) {
                 break;
         }
     }
-    /*for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "--help") == 0) 
-            mode.help = true;
-        else if (strcmp(argv[i], "--test") == 0) 
-            mode.test = true;
-        else if (strcmp(argv[i], "--interactive") == 0)
-            mode.interactive = true;
-        else {
-            printf("This argument no exist\n");
-        }
-    }*/
-    if (mode.help == false && mode.test == false && mode.interactive == false) {
+    if (!mode.help && !mode.test && !mode.interactive) {
         printf(MAGENTA "Transition to normal mode...\n" RESET);
         mode.interactive = true;
     }

@@ -5,11 +5,12 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+
 /**
  * @note функция-обертка макроса ASSERT
 */
-void fooAssert(bool condition, const char *expr, const char *file, const char *func, int line);
+void assertImpl(bool condition, const char *expr, const char *file, const char *func, int line);
 
-#define ASSERT(expr) fooAssert(expr, #expr, __FILE__, __FUNCTION__, __LINE__)
+#define ASSERT(expr) assertImpl(expr, #expr, __FILE__, __FUNCTION__, __LINE__)
     
 #endif // ASSERTIK_H_

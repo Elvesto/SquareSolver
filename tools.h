@@ -2,7 +2,7 @@
 #define TOOLS_H_
 
 /**
- * @note Очищает входной поток
+ * @brief Очищает входной поток
  */
 void clearStdin();
 
@@ -30,16 +30,21 @@ bool myIsInf(double x);
  */
 bool myIsFinite(double numb);
 
+void swap(double *num1, double *num2);
+
 /**
- * @brief меняет местами две переменные типа double 
+ * @brief меняет местами две переменные типа double, сортируя их
  */
 void swapSort(double *num1, double *num2);
 
 /**
- * @brief сравнивает две переменные типа double
+ * @brief сравнивает две переменные типа double 
  * @return Ф-ия возвращает true если числа равны с учетом погрешности EPSILON, false - если нет
-*/
+ */
 bool equal(double num1, double num2);
+
+bool streamEmpty();
+
 
 
 #endif // TOOLS_H_

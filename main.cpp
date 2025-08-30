@@ -3,30 +3,29 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "assertik.h"
+#include "loger.h"
 #include "colors.h"
-#include "tools.h"
-#include "solvers.h"
-#include "UI.h"
 #include "test.h"
 #include "modes.h"
 
-int main(int argc, char *argv[]) {
+
+int main(const int argc, const char *argv[]) {
+    openLogFile();
+    printMessage("Starting program - %d\n", INFO, 1, 1);
     char *file = NULL;
     Mode mode = chooseMode(argc, argv, &file);
-    if (mode.help == true) {
+    if (mode.help) {
         help();
     }
-    if (mode.test == true) {
+    if (mode.test) {
         int failed = testAll(file);
         printf(YELLOW "--test" RED "          Count failed tests = %d" RESET"\n", failed);
     }
-    if (mode.interactive == true) {
+    if (mode.interactive) {
         interactive();
     }
 
     //printf(CYAN_BACK "GIT COMMIT:)" RESET "\n");
-
+    closeLogFile();
     return 0;
 }
-

@@ -7,8 +7,18 @@ struct Equation {
     double x1, x2;
 };
 
-int test(Equation equation);
-int testAll(char *f);
+/**
+ * @param [in] reference Значения сравниваемые с значениями полученными в ходе выполнения программы
+ * @return Ф-ия возвращает количество несовпадений значений
+ */
+int test(Equation reference);
 
+/**
+ * @param [in] filename Название текстового файла откуда будут сравниваться значения
+ * @return Ф-ия возвращает количество несовпадений значений
+ */
+int testAll(char *fileName);
+
+bool checkRoots(double xref, double x);
 
 #endif // TEST_H_

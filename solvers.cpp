@@ -5,6 +5,7 @@
 #include "assertik.h"
 #include "tools.h"
 
+
 double discriminant(double a, double b, double c) {
     ASSERT(!(myIsFinite(a)));
     ASSERT(!(myIsFinite(b)));
@@ -13,7 +14,7 @@ double discriminant(double a, double b, double c) {
     return b*b - 4*a*c;
 }
 
-void solverWithOneRoot(double a, double b, double* x) {
+void solverWithOneRoot(double a, double b, double *x) {
     ASSERT(!(myIsFinite(a)));
     ASSERT(!(myIsFinite(b)));
     ASSERT(x != NULL);
@@ -22,7 +23,7 @@ void solverWithOneRoot(double a, double b, double* x) {
     *x = equalZero(*x) ? 0 : *x;
 }
 
-void solverWithTwoRoots(double a, double b, double D, double* x1, double* x2) {
+void solverWithTwoRoots(double a, double b, double D, double *x1, double *x2) {
     ASSERT(!(myIsFinite(a)));
     ASSERT(!(myIsFinite(b)));
     ASSERT(!(myIsFinite(D)));
@@ -37,7 +38,7 @@ void solverWithTwoRoots(double a, double b, double D, double* x1, double* x2) {
     *x2 = equalZero(*x2) ? 0 : *x2;
 }
 
-NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2) {
+NumberOfRoots solverQuad(double a, double b, double c, double *x1, double *x2) {
     ASSERT(!(myIsFinite(a)));
     ASSERT(!(myIsFinite(b)));
     ASSERT(!(myIsFinite(c)));
@@ -45,10 +46,13 @@ NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2) {
     ASSERT(x2 != NULL);
 
     double D = discriminant(a, b, c);
-    if (D < 0)
+    if (D < 0) {
+        *x1 = NAN;
+        *x2 = NAN;
         return ZERO;
-    else if (equalZero(D)) {
+    } else if (equalZero(D)) {
         solverWithOneRoot(a, b, x1);
+        *x2 = NAN;
         return ONE;
     } else {
         solverWithTwoRoots(a, b, D, x1, x2);
@@ -63,7 +67,7 @@ double solverLineal(double b, double c) {
     return (!equalZero(root)) ? root : 0;
 }
 
-NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2) {
+NumberOfRoots solverAll(double a, double b, double c, double *x1, double *x2) {
     ASSERT(!(myIsFinite(a)));
     ASSERT(!(myIsFinite(b)));
     ASSERT(!(myIsFinite(c)));
@@ -74,10 +78,15 @@ NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2) {
         return solverQuad(a, b, c, x1, x2);
     } else if (equalZero(a) && !equalZero(b)) {
         *x1 = solverLineal(b, c);
+        *x2 = NAN;
         return ONE;
     } else if (equalZero(a) && equalZero(b) && equalZero(c)) {
+        *x1 = NAN;
+        *x2 = NAN;
         return INFINITE;
     } else {
+        *x1 = NAN;
+        *x2 = NAN;
         return ZERO;
     }
 }

@@ -9,14 +9,15 @@
 #include "tools.h"
 #include "test.h"
 
-State getCoef(double* a, double* b, double* c) {
+
+State getCoef(double *a, double *b, double *c) {
     ASSERT(a != NULL);
     ASSERT(b != NULL);
     ASSERT(c != NULL);
 
     int n = scanf("%lf%lf%lf", a, b, c);
     if (n != 3) {
-        if (getc(stdin) == 'q') {
+        if (getc(stdin) == 'q' && streamEmpty()) {
             printf(BLUE_BACK KURSIV "Exit the program..." RESET "\n");
             return QUIT;
         }
@@ -30,14 +31,17 @@ State getCoef(double* a, double* b, double* c) {
             return QUIT;
         }
     } else {
+        if (!streamEmpty()) {
+            clearStdin();
+            printf(RED BOLD "format: a b c\n");
+            printf("ax^2 + bx + c = 0\n" RESET);
+            return ERROR;
+        }
         return PROCESS;
     }
 }
 
 void printSolution(double x1, double x2, NumberOfRoots numbRoots) {
-    ASSERT(!(myIsFinite(x1)));
-    ASSERT(!(myIsFinite(x2)));
-    
     switch (numbRoots) {
         case ZERO:
             printf(UNDERLINE "No real solution" RESET"\n");

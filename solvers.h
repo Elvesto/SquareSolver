@@ -9,7 +9,6 @@ typedef enum NumberOfRoots {
 } NumberOfRoots;
 
 /**
- * @brief goida
  * @param [in] a коэффициент уравнения
  * @param [in] b коэффициент уравнения
  * @param [in] c коэффициент уравнения
@@ -22,7 +21,7 @@ double discriminant(double a, double b, double c);
  * @param [in] b коэффициент уравнения
  * @param [out] x Единственный корень уравнения
  */
-void solverWithOneRoot(double a, double b, double* x);
+void solverWithOneRoot(double a, double b, double *x);
 
 /**
  * @param [in] a коэффициент уравнения
@@ -31,7 +30,7 @@ void solverWithOneRoot(double a, double b, double* x);
  * @param [out] x1 Первый корень уравнения
  * @param [out] x2 Второй корень уравнения
  */
-void solverWithTwoRoots(double a, double b, double D, double* x1, double* x2);
+void solverWithTwoRoots(double a, double b, double D, double *x1, double *x2);
 
 /**
  * @param [in] a коэффициент уравнения
@@ -41,7 +40,7 @@ void solverWithTwoRoots(double a, double b, double D, double* x1, double* x2);
  * @param [out] x2 корень уравнения
  * @return Ф-ия возвращает количество корней 
  */
-NumberOfRoots solverQuad(double a, double b, double c, double* x1, double* x2);
+NumberOfRoots solverQuad(double a, double b, double c, double *x1, double *x2);
 
 /**
  * @param [in] b коэффициент уравнения
@@ -58,7 +57,7 @@ double solverLineal(double b, double c);
  * @param [out] x2 Корень уравнения
  * @return Ф-ия возвращает количество корней
  */
-NumberOfRoots solverAll(double a, double b, double c, double* x1, double *x2);
+NumberOfRoots solverAll(double a, double b, double c, double *x1, double *x2);
 
 
 #endif // SOLVERS_H_

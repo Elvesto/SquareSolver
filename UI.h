@@ -10,8 +10,6 @@ typedef enum State {
     ERROR
 } State;
 
-
-
 /**
  * @param [out] a Указатель на коэфициент, чтобы его получить
  * @param [out] b Указатель на коэфициент, чтобы его получить
@@ -21,7 +19,7 @@ typedef enum State {
  * PROCESS - Продолжение выполнение программы, 
  * ERROR - Выход из программы
  */
-State getCoef(double* a, double* b, double* c);
+State getCoef(double *a, double *b, double *c);
 
 /**
  * @param [in] x1 Первый корень

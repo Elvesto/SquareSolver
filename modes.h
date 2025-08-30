@@ -7,9 +7,20 @@ struct Mode {
     bool test;
 };
 
+/**
+ * @brief Печатает информацию --help
+ */
 void help();
+
+/**
+ * @brief Входит в режим --interactive
+ */
 void interactive();
-Mode chooseMode(int argc, char *argv[], char* *file);
+
+/**
+ * @brief Обрабатывает аргументы командной строки
+ */
+Mode chooseMode(const int argc, const char *argv[], char **file);
 
 
-#endif
+#endif // MODES_H_
